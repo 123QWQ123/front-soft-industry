@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Avatar</th>
+    <th scope="col">Name</th>
+    <th scope="col">Surname</th>
+    <th scope="col">Patronymic</th>
+    <th scope="col">Sociability</th>
+    <th scope="col">Engineering Skill</th>
+    <th scope="col">Time Management</th>
+    <th scope="col">Knowledge Of Languages</th>
+    <th scope="col">Projects</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let employee of employees">
+    <th scope="row">{{ employee.id }}</th>
+    <td><img src="{{ baseUrl + employee.avatarUrl }}" style="width: 100px; height: 100px"></td>
+    <td>{{ employee.name }}</td>
+    <td>{{ employee.surname }}</td>
+    <td>{{ employee.patronymic }}</td>
+    <td>{{ employee.sociability }}</td>
+    <td>{{ employee.engineering_skill }}</td>
+    <td>{{ employee.time_management }}</td>
+    <td>{{ employee.knowledge_of_languages }}</td>
+    <td>
+      <div *ngFor="let project of employee.projects" class="row">
+        <span>{{project.title}}</span>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

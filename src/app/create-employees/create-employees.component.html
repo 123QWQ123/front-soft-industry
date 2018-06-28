@@ -1,0 +1,126 @@
+<div class="form-group">
+
+    <form [formGroup]="employeesForm" (ngSubmit)="onFormSubmit()">
+        <div class="form-group">
+            <label>Name:</label>
+            <input formControlName="name"  placeholder="Enter Name" class="form-control">
+            <div *ngIf="employeesForm.get('name').dirty && employeesForm.get('name').invalid"
+                 class="alert alert-danger" role="alert">
+                Incorrect Field!
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Surname:</label>
+            <input formControlName="surname"  placeholder="Enter Last Name" class="form-control">
+            <div *ngIf="employeesForm.get('surname').dirty && employeesForm.get('surname').invalid"
+                 class="alert alert-danger" role="alert">
+                Incorrect Field!
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Patronymic:</label>
+            <input formControlName="patronymic"  placeholder="Enter Patronymic" class="form-control">
+            <div *ngIf="employeesForm.get('patronymic').dirty && employeesForm.get('patronymic').invalid"
+                 class="alert alert-danger" role="alert">
+                Incorrect Field!
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Sociability:</label>
+            <select formControlName="sociability" class="form-control custom-select mr-sm-2">
+                <option value="0">Zero</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+                <option value="6">Six</option>
+                <option value="7">Seven</option>
+                <option value="8">Eight</option>
+                <option value="9">Nine</option>
+                <option value="10">Ten</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Engineering Skill:</label>
+            <select formControlName="engineeringSkill" class="form-control custom-select mr-sm-2">
+                <option value="0">Zero</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+                <option value="6">Six</option>
+                <option value="7">Seven</option>
+                <option value="8">Eight</option>
+                <option value="9">Nine</option>
+                <option value="10">Ten</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Time Management:</label>
+            <select formControlName="timeManagement" class="form-control custom-select mr-sm-2">
+                <option value="0">Zero</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+                <option value="6">Six</option>
+                <option value="7">Seven</option>
+                <option value="8">Eight</option>
+                <option value="9">Nine</option>
+                <option value="10">Ten</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Projects:</label>
+            <div *ngFor="let project of projects">
+                <label>
+                    <input type="checkbox"
+                           name="options"
+                           value="{{project.id}}"
+                           [checked]="project.check"
+                           (change)="updateCheckedProject(project, $event)"/>
+                    {{ project.title }}
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Knowledge Of Languages:</label>
+            <select formControlName="knowledgeOfLanguages" class="form-control custom-select mr-sm-2">
+                <option value="0">Zero</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+                <option value="6">Six</option>
+                <option value="7">Seven</option>
+                <option value="8">Eight</option>
+                <option value="9">Nine</option>
+                <option value="10">Ten</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="col md-4">
+                <label class="custom-file-label" for="inputGroupFile01">Avatar</label>
+                <input
+                        id="inputGroupFile01"
+                        type="file"
+                        accept="image/*"
+                        formControlName="avatar"
+                        class="custom-file-input"
+                        (change)="imageUpload($event.target.files)"
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <img [src]="imgUrl" style="width: 200px; height: 200px"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" [disabled]="employeesForm.invalid" type="submit">Submit</button>
+        </div>
+    </form>
+
+</div>
